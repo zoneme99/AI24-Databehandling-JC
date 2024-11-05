@@ -21,3 +21,8 @@ def uniques(df):
 def my_palette(size):
 	return sns.color_palette("blend:#00D9FF,#D2FF61", n_colors=size)
 
+def df_to_numeric(df, error="raise"):
+	for col in df.columns:
+		df[col] = pd.to_numeric(df[col], errors=error)
+		return df
+	
