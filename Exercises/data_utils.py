@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 def plt_nans(df):
 	nan_counts = df.isna().sum()
@@ -11,7 +12,11 @@ def plt_nans(df):
 def type_mask(df):
 	mask = pd.DataFrame()
 	for col in df.columns:
-		mask[col] = df[col].apply(lambda x: type(x))
+		nans = df[df[col].isna()][col]
+		other = df[df[col].notna()][col]
+		other = other.apply(lambda x: type(x))
+		nans = nans.apply(lambda x: np.nan)
+		mask[col] = pd.concat([other, nans])
 	return mask
 
 def uniques(df):
@@ -25,4 +30,4 @@ def df_to_numeric(df, error="raise"):
 	for col in df.columns:
 		df[col] = pd.to_numeric(df[col], errors=error)
 		return df
-	
+	 
