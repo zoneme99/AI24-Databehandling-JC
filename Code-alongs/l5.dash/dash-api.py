@@ -44,7 +44,7 @@ app.layout = html.Div([
 
 
 @app.callback(
-    Output("stock-graph", "figure"),
+    Output("stock-graph", "d"),
     Input("stock-picker-dropdown", "value"),
     Input("ohlc-radio", "value"),
     Input("time-slider", "value")
