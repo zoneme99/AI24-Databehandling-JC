@@ -21,8 +21,8 @@ app.layout = html.Div(className='parent', children=[
     )
 
 @callback(
-    [Output(component_id='sin', component_property='figure'),
-     Output(component_id='cos', component_property='figure')],
+    Output(component_id='sin', component_property='figure'),
+    Output(component_id='cos', component_property='figure'),
     Input(component_id='my-radio-buttons-final', component_property='value')
 )
 
