@@ -12,13 +12,15 @@ cosinus = px.line(x= X, y= np.cos(X))
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(dcc.Graph(figure={}, id="sin")),
-        dbc.Col(dcc.Graph(figure=cosinus, id="cos"))])
+        dbc.Col(dcc.Graph(figure=cosinus, id="cos"))]),
+    dbc.Row([
+        dbc.Col("Hello"),
+        dbc.Col("World")], className=['mx-0 bg-light border', 'text-center'])
     
     ,
     html.Div(children=[
-        dcc.RadioItems(options=[*range(5, 55, 5)],
+        dbc.RadioItems(options=[*range(5, 55, 5)],
                     value= 5,
-                    inline=True,
                     id='my-radio-buttons-final')
     ]
     )
